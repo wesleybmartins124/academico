@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>Lista de alunos</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"	rel="stylesheet" />
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" 	rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+  <div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de Alunos</h1>
+		</div>
+		<div class="panel-body">
+		
+		<form class="row" th:object="${alunoEntity}" th:action="@{/salvar-aluno}" method="post">
+			<div class="mb-3 col-md-10">
+  				<label for="formGroupExampleInput" class="form-label">Nome Aluno</label>
+  				<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome do aluno" th:field="*{nome}">
+			</div>
+			<div class="mb-3 col-md-2">
+  				<label for="formGroupExampleInput2" class="form-label">Idade</label>
+  				<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Idade do aluno" th:field="*{idade}">
+			</div>	
+			
+			<div class="mb-3 col-md-12">
+  				<label for="formGroupExampleInput2" class="form-label">Endereço</label>
+  				<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Endereço do aluno" th:field="*{endereco}">
+			</div>	
+			
+			<div class="mb-3 col-md-5" >
+  				<label for="formGroupExampleInput2" class="form-label">Telefone</label>
+  				<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Telefone do aluno" th:field="*{telefone}">
+			</div>
+			
+			<div class="mb-3 col-md-7">
+  				<label for="formGroupExampleInput2" class="form-label">E-mail</label>
+  				<input type="email" class="form-control" id="formGroupExampleInput2" placeholder="e-mail do aluno" th:field="*{email}">
+			</div>	
+				
+			<div class="mb-3 col-lg-12" style="text-align: right;">
+    			<button type="submit" class="btn btn-success">Salvar</button>
+			</div>						
+		</form>	
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Idade</th>
+						<th>Endereço</th>
+						<th>Telefone</th>
+						<th>E-mail</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="aluno : ${alunos}">
+						<td th:text="${aluno.nome}"></td>
+						<td th:text="${aluno.idade}"></td>
+						<td th:text="${aluno.endereco}"></td>
+						<td th:text="${aluno.telefone}"></td>
+						<td th:text="${aluno.email}"></td>
+						<td>
+							<a th:href="@{/aluno/editar/{id}(id = ${aluno.id})}" class="btn btn-warning">Editar</a> 							
+						</td>
+						<td>
+							<a th:href="@{/aluno/excluir/{id}(id = ${aluno.id})}" class="btn btn-danger">Excluir</a> 							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
