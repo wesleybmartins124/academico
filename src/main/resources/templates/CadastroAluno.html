@@ -5,7 +5,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 
-<title>Academico</title>
+<title>Lista de alunos</title>
 
 <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
 	rel="stylesheet" />
@@ -13,14 +13,13 @@
 	rel="stylesheet" />
 </head>
 <body>
-
 	<div class="container">
 
 		<div class="jumbotron">
 			<h1 class="display-4">Acadêmico Etec Jorge Street</h1>
 		</div>
-
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">	
+		
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">	
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
@@ -35,7 +34,7 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="/aluno/cadastro">Cadastrar Aluno</a> <a
 								class="dropdown-item" href="/aluno/lista">Listar Alunos</a>
-							<div class="dropdown-divider"></div>							
+							<div class="dropdown-divider"></div>	
 						</div></li>
 
 					<li class="nav-item dropdown"><a
@@ -62,18 +61,54 @@
 				</form>
 			</div>
 		</nav>
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Lista de Alunos</h1>
+			</div>
+			<div class="panel-body">
 
-		<div class="mt-4">
-		
-		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8BAL0MSAi-MiqvOzc52tDQCuLTXnuZj7fWQ&usqp=CAU"  />
-			<!-- <figure class="figure">
-				<img th:src="@{/resources/images/etec_street.jpg}" class="figure-img img-fluid rounded" alt="...">
-				<figcaption class="figure-caption">A caption for the
-					above image.</figcaption>
-			</figure> -->
+				<form class="row" th:object="${alunoEntity}"
+					th:action="@{/salvar-aluno}" method="post">
+					<div class="mb-3 col-md-10">
+						<label for="formGroupExampleInput" class="form-label">Nome
+							Aluno</label> <input type="text" class="form-control"
+							id="formGroupExampleInput" placeholder="Digite o nome do aluno"
+							th:field="*{nome}">
+					</div>
+					<div class="mb-3 col-md-2">
+						<label for="formGroupExampleInput2" class="form-label">Idade</label>
+						<input type="text" class="form-control"
+							id="formGroupExampleInput2" placeholder="Idade do aluno"
+							th:field="*{idade}">
+					</div>
 
+					<div class="mb-3 col-md-12">
+						<label for="formGroupExampleInput2" class="form-label">Endereço</label>
+						<input type="text" class="form-control"
+							id="formGroupExampleInput2" placeholder="Endereço do aluno"
+							th:field="*{endereco}">
+					</div>
+
+					<div class="mb-3 col-md-5">
+						<label for="formGroupExampleInput2" class="form-label">Telefone</label>
+						<input type="text" class="form-control"
+							id="formGroupExampleInput2" placeholder="Telefone do aluno"
+							th:field="*{telefone}">
+					</div>
+
+					<div class="mb-3 col-md-7">
+						<label for="formGroupExampleInput2" class="form-label">E-mail</label>
+						<input type="email" class="form-control"
+							id="formGroupExampleInput2" placeholder="e-mail do aluno"
+							th:field="*{email}">
+					</div>
+
+					<div class="mb-3 col-lg-12" style="text-align: right;">
+						<button type="submit" class="btn btn-success">Salvar</button>
+					</div>
+				</form>				
+			</div>
 		</div>
-
 	</div>
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

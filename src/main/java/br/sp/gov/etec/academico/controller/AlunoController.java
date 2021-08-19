@@ -8,27 +8,37 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.sp.gov.etec.academico.dto.AlunoEntity;
 import br.sp.gov.etec.academico.repository.AlunoRepository;
 
 
-@Controller
+@Controller()
+@RequestMapping("aluno")
 public class AlunoController {
 	
 	@Autowired
 	AlunoRepository repository;
 	
 	
-	@GetMapping("alunos")
+	@GetMapping("cadastro")
+	public ModelAndView cadastroAluno() {	
+		
+		ModelAndView view = new ModelAndView("CadastroAluno");
+		
+		view.addObject(new AlunoEntity());			
+		
+		return view;
+	}
+	
+	@GetMapping("lista")
 	public ModelAndView listarAlunos() {	
 		
 		ModelAndView view = new ModelAndView("ListaAlunos");
 		
-		List<AlunoEntity> listaAlunos = repository.findAll();	
-		
-		view.addObject(new AlunoEntity());
+		List<AlunoEntity> listaAlunos = repository.findAll();		
 		
 		view.addObject("alunos", listaAlunos);		
 		
