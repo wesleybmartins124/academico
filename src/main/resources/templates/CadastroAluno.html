@@ -32,8 +32,8 @@
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> Aluno </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="/aluno/cadastro">Cadastrar Aluno</a> <a
-								class="dropdown-item" href="/aluno/lista">Listar Alunos</a>
+							<a class="dropdown-item" href="/aluno/cadastrar">Cadastrar Aluno</a> <a
+								class="dropdown-item" href="/aluno/listar">Listar Alunos</a>
 							<div class="dropdown-divider"></div>	
 						</div></li>
 
@@ -62,13 +62,14 @@
 			</div>
 		</nav>
 		<div class="panel panel-default" style="margin: 10px">
-			<div class="panel-heading">
-				<h1 class="panel-title">Lista de Alunos</h1>
-			</div>
 			<div class="panel-body">
+			
+			
 
-				<form class="row" th:object="${alunoEntity}"
-					th:action="@{/salvar-aluno}" method="post">
+				<form class="row" th:object="${alunoEntity}" th:action="@{/aluno/salvar}" method="post">
+				
+				<input type="hidden" th:field="*{id}">
+				
 					<div class="mb-3 col-md-10">
 						<label for="formGroupExampleInput" class="form-label">Nome
 							Aluno</label> <input type="text" class="form-control"

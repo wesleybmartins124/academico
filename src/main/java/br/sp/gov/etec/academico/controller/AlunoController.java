@@ -23,7 +23,7 @@ public class AlunoController {
 	AlunoRepository repository;
 	
 	
-	@GetMapping("cadastro")
+	@GetMapping("cadastrar")
 	public ModelAndView cadastroAluno() {	
 		
 		ModelAndView view = new ModelAndView("CadastroAluno");
@@ -33,7 +33,7 @@ public class AlunoController {
 		return view;
 	}
 	
-	@GetMapping("lista")
+	@GetMapping("listar")
 	public ModelAndView listarAlunos() {	
 		
 		ModelAndView view = new ModelAndView("ListaAlunos");
@@ -45,27 +45,27 @@ public class AlunoController {
 		return view;
 	}
 	
-	@PostMapping("salvar-aluno")
+	@PostMapping("salvar")
 	public String salvarAluno(AlunoEntity aluno) {
 		
 		repository.save(aluno);
 		
-		return "redirect:/alunos";
+		return "redirect:/aluno/listar";
 		
 	}
 	
-	@GetMapping("/aluno/editar/{id}")
+	@GetMapping("editar/{id}")
 	public String editarAluno(@PathVariable Long id, Model model) {		
 		AlunoEntity alunoEntity = repository.findById(id).get();		
 		model.addAttribute(alunoEntity);		
-		return "aluno";	
+		return "CadastroAluno";
 		
 	}
 	
-	@GetMapping("/aluno/excluir/{id}")
+	@GetMapping("excluir/{id}")
 	public String excluirAluno(@PathVariable Long id) {		
 			repository.deleteById(id);			
-		return "redirect:/alunos";		
+		return "redirect:/aluno/listar";		
 		
 	}
 }
