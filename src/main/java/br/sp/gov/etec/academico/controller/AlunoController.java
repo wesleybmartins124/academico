@@ -50,7 +50,7 @@ public class AlunoController {
 		
 		repository.save(aluno);
 		
-		return "redirect:/aluno/cadastrar";
+		return "redirect:/aluno/listar";
 		
 	}
 	
@@ -58,7 +58,7 @@ public class AlunoController {
 	public String editarAluno(@PathVariable Long id, Model model) {		
 		AlunoEntity alunoEntity = repository.findById(id).get();		
 		model.addAttribute(alunoEntity);		
-		return "aluno";	
+		return "CadastroAluno";	
 		
 	}
 	
