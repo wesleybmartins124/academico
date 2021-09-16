@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<title>Academico</title>
+
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+
+	<div class="container">
+		<form action="/logar" th:object="${login}">
+			<div class="form-group">
+				<label for="formGroupExampleInput">Usuário</label> 
+				<input type="text" class="form-control" th:errorclass="is-invalid"  th:field="*{usuario}"	placeholder="Input usuário">
+				<div th:errors="*{usuario}" class="invalid-feedback"></div>
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Senha</label> 
+				<input type="text" class="form-control" th:errorclass="is-invalid"  th:field="*{senha}" placeholder="Input senha ">
+				<div th:errors="*{senha}" class="invalid-feedback"></div>
+			</div>
+			<div class="col text-right">
+				<button type="submit" class="btn btn-success">Success</button>
+			</div>			
+		</form>
+
+	</div>
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
