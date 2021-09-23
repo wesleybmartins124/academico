@@ -1,0 +1,1 @@
+INSERT INTO TB_LOGIN("LOGIN","SENHA") values ('ADMIN','123');
